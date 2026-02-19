@@ -1,0 +1,37 @@
+services:
+  wp-db:
+    image: mariadb:latest
+    container_name: wp-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: {ROOT_PASSOWORD}
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: {USER}
+      MYSQL_PASSWORD: {USER_PASSWORD}
+    volumes:
+      - ./db_data:/var/lib/mysql
+    networks:
+      - wp-internal
+
+  wordpress:
+    depends_on:
+      - wp-db
+    image: wordpress:latest
+    container_name: wordpress-app
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: wp-db:3306
+      WORDPRESS_DB_USER: {USER}
+      WORDPRESS_DB_PASSWORD: {WP_USER_PASSOWRD}
+      WORDPRESS_DB_NAME: {WP_DATABASE_NAME}
+    volumes:
+      - ./wp_data:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    networks:
+      - wp-internal
+
+networks:
+  wp-internal:
+    driver: bridge
