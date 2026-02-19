@@ -1,0 +1,28 @@
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    restart: always
+    environment:
+      - MARIADB_ROOT_PASSWORD={ROOT_PASSWORD}
+      - MARIADB_DATABASE={DATABASE NAME}
+    volumes:
+      - ./mariadb-data:/var/lib/mysql
+    networks:
+      - npm_network
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    depends_on:
+      - mariadb
+    environment:
+      - PMA_HOST=mariadb
+      - PMA_ARBITRARY=1
+    networks:
+      - npm_network
+
+networks:
+  npm_network:
+    external: true

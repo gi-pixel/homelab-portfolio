@@ -1,0 +1,21 @@
+services:
+  opencloud:
+    image: owncloud/ocis:latest
+    container_name: opencloud
+    restart: unless-stopped
+    environment:
+      - OCIS_URL={SITE_DOMAIN}
+      - OCIS_DOMAIN={DOMAIN}
+      - OCIS_INSECURE=true
+      - PROXY_HTTP_ADDR={ACCESS PORT}
+      - OCIS_LOG_LEVEL=debug
+      - PROXY_TLS=false
+    volumes:
+      - ./config:/etc/ocis
+      - ./data:/var/lib/ocis
+    networks:
+      - npm_network
+
+networks:
+  npm_network:
+    external: true

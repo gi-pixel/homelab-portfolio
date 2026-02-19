@@ -1,0 +1,20 @@
+
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - HOMEPAGE_ALLOWED_HOSTS={HOST ACCESS},homepage:3000
+    volumes:
+      - ./homepage-config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./images:/app/public/images
+    networks:
+      - npm_network
+
+networks:
+  npm_network:
+    external: true

@@ -1,0 +1,14 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: always
+    environment:
+      - SIGNUPS_ALLOWED=true  # Set to false after you create your account
+    volumes:
+      - ./vaultwarden_data:/data
+    networks:
+      - npm_network
+networks:
+  npm_network:
+    external: true
