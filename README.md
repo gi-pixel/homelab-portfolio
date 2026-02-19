@@ -31,11 +31,11 @@ homelab-portfolio/
 ## Automation Toolkit
 ```text
 Script    Function
-master-install.sh    The Orchestrator. Runs system prep, deploys all containers, and runs health checks.
-install-docker.shAutomates Docker Engine & Compose installation on fresh Ubuntu nodes.
-sync-portfolio.shSyncs live configs to this repo while scrubbing passwords for security.
-migrate-wp.shHandles data packaging and transfer between nodes via SSH/Tailscale.
-check-health.shFast CLI-based status monitoring for all running services.
+master-install.sh   The Orchestrator. Runs system prep, deploys all containers, and runs health checks.
+install-docker.sh   Automates Docker Engine & Compose installation on fresh Ubuntu nodes.
+sync-portfolio.sh   Syncs live configs to this repo while scrubbing passwords for security.
+migrate-wp.sh        Handles data packaging and transfer between nodes via SSH/Tailscale.
+check-health.sh      Fast CLI-based status monitoring for all running services.
 ```
 ## Getting Started
  * Prerequisites
