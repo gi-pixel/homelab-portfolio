@@ -38,17 +38,18 @@ migrate-wp.shHandles data packaging and transfer between nodes via SSH/Tailscale
 check-health.shFast CLI-based status monitoring for all running services.
 ```
 ## Getting Started
- * **PrerequisitesUbuntu 22.04 or 24.04 LTS.
- * **Tailscale installed and authenticated for inter-node communication.
- * **One-Click DeploymentTo replicate this environment on a fresh server, clone the repository and run the master orchestrator:
+ * Prerequisites
+    * Ubuntu 22.04 or 24.04 LTS.
+    * Tailscale installed and authenticated for inter-node communication.
+ * One-Click DeploymentTo replicate this environment on a fresh server, clone the repository and run the master orchestrator:
 ```text
 git clone [https://github.com/gi-pixel/homelab-portfolio.git](https://github.com/gi-pixel/homelab-portfolio.git)
 cd homelab-portfolio
 bash scripts/master-install.sh
 ```
 ## Security & Best Practices
- * **Environment Variables: All sensitive data is managed via .env files which are strictly excluded from Git tracking.
- * **Secret Scrubbing: The sync-portfolio.sh script uses sed patterns to automatically redact raw passwords from source code before any commit.
- * **Reverse Proxy & SSL: SSL termination is handled via Tailscale Certificates integrated through Nginx Proxy Manager, ensuring encrypted internal traffic without exposing ports to the public internet.
-
- * **Created by gi-pixel — Focused on DevOps and Infrastructure Automation.
+ * Environment Variables: All sensitive data is managed via .env files which are strictly excluded from Git tracking.
+ * Secret Scrubbing: The sync-portfolio.sh script uses sed patterns to automatically redact raw passwords from source code before any commit.
+ * Reverse Proxy & SSL: SSL termination is handled via Tailscale Certificates integrated through Nginx Proxy Manager, ensuring encrypted internal traffic without exposing ports to the public internet.
+   
+Created by gi-pixel — Focused on DevOps and Infrastructure Automation.
