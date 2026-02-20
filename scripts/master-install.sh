@@ -16,10 +16,10 @@ SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
 
 # 1. System Prep (Run the Docker Install script)
 echo -e "\n${GREEN}[1/3] Preparing System & Installing Docker...${NC}"
-if [ -f "$SCRIPT_DIR/install-docker.sh" ]; then
-    bash "$SCRIPT_DIR/install-docker.sh"
+if [ -f "$SCRIPT_DIR/setup.sh" ]; then
+    bash "$SCRIPT_DIR/setup.sh"
 else
-    echo "Error: install-docker.sh not found in $SCRIPT_DIR"
+    echo "Error: setup.sh not found in $SCRIPT_DIR"
 fi
 
 # 2. Deploy All Docker Containers
@@ -37,7 +37,7 @@ done
 # 3. Final Health Check
 echo -e "\n${GREEN}[3/3] Running Initial Health Check...${NC}"
 if [ -f "$SCRIPT_DIR/check-health.sh" ]; then
-    bash "$SCRIPT_DIR/check-health.sh"
+    bash "$SCRIPT_DIR/health-check.sh"
 else
     echo "check-health.sh not found, skipping final check."
 fi
